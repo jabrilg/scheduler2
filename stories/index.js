@@ -201,7 +201,7 @@ storiesOf("Button", module)
       onSave={action("onSave")}
       interviewers={interviewers}
       interviewer={1}
-      student={'Mike Jones'}
+      student={'Jabril G'}
     />
 
   ))
