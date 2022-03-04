@@ -16,5 +16,5 @@ export default function Daylist(props) {
   })
   return <ul>{days}</ul>;
 
-  export default Daylist;
+
 }

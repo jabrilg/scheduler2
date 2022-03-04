@@ -1,29 +1,60 @@
 import React from "react";
-// import DayList from "components/DayList";
-
-
 import "components/Application.scss";
+import DayList from "components/DayList";
+import Appointment from "components/Appointment/index";
+import{ getAppointmentsForDay, getInterview, getInterviewersForDay }from "../helpers/selectors"
+import useApplicationData from "hooks/useApplicationData"
 
 export default function Application(props) {
+  const {
+    state,
+    setDay,
+    bookInterview,
+    cancelInterview
+  } = useApplicationData();
+    const filteredAppointments = getAppointmentsForDay(state, state.day);
+    const appointmentList = filteredAppointments.map(appointment => {
+
+
+      const interview = getInterview(state, appointment.interview);
+
+     
+
+      const interviewersList = getInterviewersForDay(state, state.day)
+     
+      return ( 
+      <Appointment 
+      interview={interview} 
+      time={appointment.time} 
+      key={appointment.id} {...appointment} 
+      interviewers={interviewersList}
+      bookInterview={bookInterview}
+      cancelInterview={cancelInterview}
+      />);
+    });
+  
+  
   return (
     <main className="layout">
       <section className="sidebar">
-      <img
-  className="sidebar--centered"
-  src="images/logo.png"
-  alt="Interview Scheduler"
-/>
-<hr className="sidebar__separator sidebar--centered" />
-<nav className="sidebar__menu"></nav>
-<img
-  className="sidebar__lhl sidebar--centered"
-  src="images/lhl.png"
-  alt="Lighthouse Labs"
-/>{/* Replace this with the sidebar elements during the "Project Setup & Familiarity" activity. */}
+        <img
+          className="sidebar--centered"
+          src="images/logo.png"
+          alt="Interview Scheduler"
+        />
+        <hr className="sidebar__separator sidebar--centered" />
+        <nav className="sidebar__menu">
+          <DayList days={state.days} day={state.day} setDay={setDay} />
+        </nav>
+        <img
+          className="sidebar__lhl sidebar--centered"
+          src="images/lhl.png"
+          alt="Lighthouse Labs"
+        />
       </section>
-      
       <section className="schedule">
-        {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
+        {appointmentList}
+        <Appointment id="last" time="5pm" />
       </section>
     </main>
   );
