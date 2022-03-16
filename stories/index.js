@@ -13,7 +13,7 @@ import DayList from "components/DayList"
 
 import InterviewerListItem from "components/InterviewerListItem.js";
 
-import InterviewerList from "components/InterviewerList"; 
+import InterviewerList from "components/InterviewerList."; 
 
 import Appointment from "components/Appointment/index.js";
 

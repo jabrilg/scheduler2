@@ -47,7 +47,9 @@ export default function Appointment(props) {
         transition(ERROR_DELETE, true)
       })
     }
-  
+   console.log ("firstname", props.interview) 
+   console.log ("interviewers", props.interviewers)
+   const nameOfInterviewer = props.interviewers && props.interview && props.interviewers.find(interviewer => interviewer.id === props.interview.interviewer) 
     return (
       <article className="appointment">
         <Header time={props.time}/>
@@ -62,7 +64,7 @@ export default function Appointment(props) {
         {mode === SHOW && (
           <Show 
             student={props.interview.student} 
-            interviewer={props.interview.interviewer} 
+            interviewer={nameOfInterviewer} 
             onDelete={() => transition(CONFIRMING)}
             appointmentId={props.id}
             onEdit={() => transition(EDIT)}

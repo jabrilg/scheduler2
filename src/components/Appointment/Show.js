@@ -2,6 +2,7 @@
 import React from "react"
 
 export default function (props) {
+  console.log ("name", props.interviewer) 
 return (<main className="appointment__card appointment__card--show">
 <section className="appointment__card-left">
   <h2 className="text--regular">{props.student}</h2>
