@@ -1,4 +1,5 @@
 import React from "react";
+import "components/Appointment/styles.scss";
 import Header from "components/Appointment/Header";
 import Show from "components/Appointment/Show";
 import Empty from "components/Appointment/Empty";
@@ -6,7 +7,8 @@ import Form from "components/Appointment/Form";
 import Status from "components/Appointment/Status"
 import Confirm from "components/Appointment/Confirm"
 import Error from "components/Appointment/Error"
-import "components/Appointment/styles.scss";
+
+
 import { useVisualMode } from "hooks/useVisualMode";
 
 
@@ -77,7 +79,7 @@ export default function Appointment(props) {
           />)}
         {mode === EDIT && 
           <Form 
-            student={props.interview.student}
+            student={props.interview && props.interview.student}
             interviewer={props.interview.interviewer}
             onCancel={back}
             onSave={save}
@@ -86,7 +88,7 @@ export default function Appointment(props) {
         {mode === ERROR_DELETE && 
         <Error 
           onClose={back}
-          message="Could not cancel appointment"
+          message="Error while Deleting"
         />}
         {mode === ERROR_SAVE && <Error onClose={back}/>}
       </article>

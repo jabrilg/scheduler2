@@ -1,7 +1,7 @@
 
-import React from 'react'
-import InterviewerListItem from 'components/InterviewerListItem.js'
-import "./InterviewerList.scss"
+import React from 'react';
+import 'components/InterviewerList.scss';
+import InterviewerListItem from './InterviewerListItem';
 import PropTypes from 'prop-types';
 
 

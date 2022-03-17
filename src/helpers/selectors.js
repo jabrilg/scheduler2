@@ -1,5 +1,5 @@
 
-export function getInterview(state,interview) {
+export function getInterview(state, interview) {
     if (interview) {
       const stateUpdated = {...interview, interviewer:state.interviewers[interview.interviewer]}
    

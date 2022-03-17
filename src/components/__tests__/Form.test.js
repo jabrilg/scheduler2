@@ -6,6 +6,8 @@ import { render, cleanup } from "@testing-library/react";
 import { fireEvent } from "@testing-library/react";
 
 import Form from "components/Appointment/Form";
+
+
 afterEach(cleanup);
 
 describe("Form", () => {
@@ -31,7 +33,7 @@ describe("Form", () => {
     );
     expect(getByTestId("student-name-input")).toHaveValue("Lydia Miller-Jones");
   });
-  it("will submits succesfully the name entered by the user", () => {
+  it("validates that the student name is not blank", () => {
     const onSave = jest.fn();
     const { getByText, getByPlaceholderText } = render(
       <Form interviewers={interviewers} onSave={onSave} />
